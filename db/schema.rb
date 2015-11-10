@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109131431) do
+ActiveRecord::Schema.define(version: 20151110160253) do
+
+  create_table "google_tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "refresh_token"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "google_tokens", ["user_id", "token"], name: "index_google_tokens_on_user_id_and_token"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
