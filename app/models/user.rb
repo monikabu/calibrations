@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, :trackable
 
+  validates :email, presence: true
+  validates :password, presence: true
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first
