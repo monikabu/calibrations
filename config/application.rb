@@ -10,6 +10,8 @@ module Calibration
   class Application < Rails::Application
     config.active_record.schema_format = :sql
     config.active_record.raise_in_transactional_callbacks = true
-    config.autoload_paths << File.join(config.root, 'lib')
+    config.autoload_paths << Rails.root.join(config.root, 'lib')
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "images")
   end
 end

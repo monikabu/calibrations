@@ -1,0 +1,102 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "font-awesome";
+
+@font-face {
+  font-family: Chalk;
+  src: asset_url('Chalk-Line-Outline.ttf') format('truetype');
+}
+
+@font-face {
+   font-family: Monthoers;
+   src: asset_url('Monthoers.ttf') format('truetype');
+}
+
+body {
+  background-color: #E6E6E6;
+  font-family: 'Monthoers';
+  font-size: 18px;
+}
+
+a {
+  color: #666666;
+}
+
+a:hover {
+  color: #666666;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.main-container {
+  background-image: image-url('blackboard-large.jpg');
+  margin-left: auto;
+  margin-right: auto;
+  width: 560px;
+  height: 460px;
+  border-radius: 2px;
+}
+
+.centered {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.main-logo {
+  margin-top: 75px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 28px;
+  color: #FBF8EF;
+  font-weight: bold;
+  opacity: 0.6;
+  font-family: 'Chalk';
+  padding-top: 10px;
+}
+
+.main-logo.logo.large {
+  font-size: 50px;
+  padding-top: 90px;
+}
+
+.sign-in-info {
+  padding-top: 20.5px;
+}
+
+.main-sign-out {
+  text-align: center;
+  float: right;
+  margin-top: 131px;
+  margin-right: 3px;
+  font-size: 20px;
+}
+
+.main-sign-in {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  width: 130px;
+  height: 35px;
+  font-size: 24px;
+}
+
+.fa.fa-hand-pointer-o {
+  color: white;
+}

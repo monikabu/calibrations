@@ -1,2 +1,25 @@
-<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<%= link_to "Synchronizations", synchronizations_path %>
+<div class='main-container'>
+  <p class='main-logo logo large'>
+    Calibration
+  </p>
+  <% if current_user %>
+    <div class='centered'>
+      <div>
+        Signed in as <strong><%= "#{current_user.name}" %></strong>
+      </div>
+      <div>
+        <%= link_to "Synchronizations", synchronizations_path %>
+      </div>
+    </div>
+  <% else %>
+    <div class='main-sign-in'>
+      <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %><%= fa_icon "hand-pointer-o" %>
+    </div>
+  <% end %>
+
+  <% if current_user %>
+    <div class='main-sign-out'>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </div>
+  <% end %>
+</div>
