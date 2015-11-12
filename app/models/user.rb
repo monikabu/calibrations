@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEXP }
   validates :password, presence: true
 
-  has_many :google_tokens, dependent: :destroy
+  has_one :google_token, dependent: :destroy
 
   def self.from_omniauth(authorization)
     attributes = authorization.info
@@ -42,9 +42,10 @@ class User < ActiveRecord::Base
   end
 
   def self.create_google_token(user, credentials)
-    user.google_tokens.create!(token: credentials['token'],
-    refresh_token: credentials['refresh_token'],
-    expires_at: credentials['expires_at']
+    GoogleToken.create!(user_id: user.id,
+      token: credentials['token'],
+      refresh_token: credentials['refresh_token'],
+      expires_at: credentials['expires_at']
     )
   end
 end
