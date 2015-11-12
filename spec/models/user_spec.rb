@@ -20,6 +20,7 @@ require 'rails_helper'
 describe User do
   describe 'validations' do
     it { is_expected.to have_one(:google_token) }
+    it { is_expected.to have_one(:slack_user) }
 
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
@@ -61,7 +62,7 @@ describe User do
         'credentials' => {
           'token' => 'google_token',
           'refresh_token' => 'google_refresh_token',
-          'expires_at' => "#{2.days.from_now}"
+          'expires_at' => 2.days.from_now.to_i
         })
     end
 

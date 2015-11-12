@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: google_tokens
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  token         :string
+#  refresh_token :string
+#  expires_at    :datetime
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class GoogleToken < ActiveRecord::Base
   belongs_to :user
 

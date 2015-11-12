@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   has_one :google_token, dependent: :destroy
+  has_one :slack_user, dependent: :destroy
 
   def self.from_omniauth(authorization)
     attributes = authorization.info

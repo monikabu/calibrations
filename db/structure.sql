@@ -73,6 +73,37 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: slack_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE slack_users (
+    id integer NOT NULL,
+    user_id integer,
+    name character varying,
+    slack_token character varying
+);
+
+
+--
+-- Name: slack_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE slack_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: slack_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE slack_users_id_seq OWNED BY slack_users.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -121,6 +152,13 @@ ALTER TABLE ONLY google_tokens ALTER COLUMN id SET DEFAULT nextval('google_token
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY slack_users ALTER COLUMN id SET DEFAULT nextval('slack_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -130,6 +168,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY google_tokens
     ADD CONSTRAINT google_tokens_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slack_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY slack_users
+    ADD CONSTRAINT slack_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -145,6 +191,13 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX index_google_tokens_on_user_id_and_token ON google_tokens USING btree (user_id, token);
+
+
+--
+-- Name: index_slack_users_on_slack_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_slack_users_on_slack_token ON slack_users USING btree (slack_token);
 
 
 --
@@ -170,4 +223,6 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20151109131431');
 
 INSERT INTO schema_migrations (version) VALUES ('20151110160253');
+
+INSERT INTO schema_migrations (version) VALUES ('20151112164455');
 
