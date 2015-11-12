@@ -48,4 +48,9 @@ class User < ActiveRecord::Base
       expires_at: Time.at(credentials['expires_at'])
     )
   end
+
+  def authorization_token
+    google_token.refresh! unless google_token.expires_at > Time.now
+    google_token.token
+  end
 end

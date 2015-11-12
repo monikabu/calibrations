@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :synchronizations, only: :index, as: :synchronizations
   end
 
+  scope module: 'google' do
+    resources :calendars, only: :index
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
