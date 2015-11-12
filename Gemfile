@@ -16,8 +16,7 @@ gem 'omniauth-google-oauth2'
 
 gem 'pg'
 
-gem 'excon'
-gem 'addressable'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug'
