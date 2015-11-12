@@ -8,16 +8,13 @@ Devise.setup do |config|
   config.warden do |manager|
     manager.failure_app = Devise::CustomFailure
   end
-  # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '68a69395340e7f9993273fc336ca6d607d19741b65fc6e2d1a5f676db7a6d16b2473ce46e57f96dfc05cbfcc436191760c44a7b415a6e23222e13dba76b4d1f9'
+  config.secret_key = '102e65ea8a83bbbc794edf724395ea415bd519b6767a263bd5b87b4e759d3bf2748f16afbc6851529b2fb360463884f170f35b752463d94f302dceaec91ee17b'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'john@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
