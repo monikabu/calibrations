@@ -19,22 +19,32 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, :trackable
+  EMAIL_REGEXP = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\Z/i
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEXP }
   validates :password, presence: true
 
   has_many :google_tokens, dependent: :destroy
 
-  def self.from_omniauth(access_token)
-    data = access_token.info
-    user = User.where(:email => data["email"]).first
+  def self.from_omniauth(authorization)
+    attributes = authorization.info
+    user = User.where(email: attributes['email']).first
 
     unless user
-      user = User.create(name: data["name"],
-         email: data["email"],
+      user = User.create!(name: attributes['name'],
+         email: attributes['email'],
          password: Devise.friendly_token[0,20]
       )
+
+      create_google_token(user, authorization.credentials)
     end
     user
+  end
+
+  def self.create_google_token(user, credentials)
+    user.google_tokens.create!(token: credentials['token'],
+    refresh_token: credentials['refresh_token'],
+    expires_at: credentials['expires_at']
+    )
   end
 end
