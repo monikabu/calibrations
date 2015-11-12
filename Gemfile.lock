@@ -68,6 +68,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     globalid (0.3.6)
@@ -111,6 +116,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    pg (0.18.2)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -208,9 +214,11 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-google-oauth2
+  pg
   rails (= 4.2.4)
   rspec-rails
   sass-rails (~> 5.0)

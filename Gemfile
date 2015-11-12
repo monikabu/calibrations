@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'omniauth-google-oauth2'
+gem 'pg'
 
 group :development, :test do
   gem 'byebug'
@@ -30,5 +31,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'factory_girl_rails', require: false
 end
 
