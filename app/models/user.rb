@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     GoogleToken.create!(user_id: user.id,
       token: credentials['token'],
       refresh_token: credentials['refresh_token'],
-      expires_at: credentials['expires_at']
+      expires_at: Time.at(credentials['expires_at'])
     )
   end
 end
