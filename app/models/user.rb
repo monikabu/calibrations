@@ -32,12 +32,14 @@ class User < ActiveRecord::Base
     user = User.where(email: attributes['email']).first
 
     unless user
-      user = User.create!(name: attributes['name'],
-         email: attributes['email'],
-         password: Devise.friendly_token[0,20]
-      )
+      User.transaction do
+        user = User.create!(name: attributes['name'],
+           email: attributes['email'],
+           password: Devise.friendly_token[0,20]
+        )
 
-      create_google_token(user, authorization.credentials)
+        create_google_token(user, authorization.credentials)
+      end
     end
     user
   end
