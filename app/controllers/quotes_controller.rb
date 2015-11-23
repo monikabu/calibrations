@@ -12,7 +12,7 @@ class QuotesController < ApplicationController
       method: :post,
       url: "https://andruxnet-random-famous-quotes.p.mashape.com/cat=movies",
       headers: {
-        "X-Mashape-Key" => Calibration::Config.mashape.key,
+        "X-Mashape-Key" => ENV["MASHAPE_APP_KEY"],
         "Content-Type" => "application/x-www-form-urlencoded",
         "Accept" => "application/json"
       })
