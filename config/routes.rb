@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :calendars, only: :index
   end
 
+  get '/quote' => 'quotes#show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
