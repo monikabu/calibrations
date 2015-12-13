@@ -64,6 +64,37 @@ ALTER SEQUENCE google_tokens_id_seq OWNED BY google_tokens.id;
 
 
 --
+-- Name: integrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE integrations (
+    id integer NOT NULL,
+    token character varying,
+    user_name character varying,
+    user_email character varying
+);
+
+
+--
+-- Name: integrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE integrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: integrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE integrations_id_seq OWNED BY integrations.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -152,6 +183,13 @@ ALTER TABLE ONLY google_tokens ALTER COLUMN id SET DEFAULT nextval('google_token
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY integrations ALTER COLUMN id SET DEFAULT nextval('integrations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY slack_users ALTER COLUMN id SET DEFAULT nextval('slack_users_id_seq'::regclass);
 
 
@@ -168,6 +206,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY google_tokens
     ADD CONSTRAINT google_tokens_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: integrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY integrations
+    ADD CONSTRAINT integrations_pkey PRIMARY KEY (id);
 
 
 --
@@ -225,4 +271,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151109131431');
 INSERT INTO schema_migrations (version) VALUES ('20151110160253');
 
 INSERT INTO schema_migrations (version) VALUES ('20151112164455');
+
+INSERT INTO schema_migrations (version) VALUES ('20151123222454');
 
