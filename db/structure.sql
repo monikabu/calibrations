@@ -111,7 +111,8 @@ CREATE TABLE slack_users (
     id integer NOT NULL,
     user_id integer,
     name character varying,
-    slack_token character varying
+    slack_token character varying,
+    confirmed boolean
 );
 
 
@@ -273,4 +274,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151110160253');
 INSERT INTO schema_migrations (version) VALUES ('20151112164455');
 
 INSERT INTO schema_migrations (version) VALUES ('20151123222454');
+
+INSERT INTO schema_migrations (version) VALUES ('20151226130620');
 
