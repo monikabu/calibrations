@@ -6,6 +6,7 @@
 #  user_id     :integer
 #  name        :string
 #  slack_token :string
+#  confirmed   :boolean
 #
 
 require 'rails_helper'

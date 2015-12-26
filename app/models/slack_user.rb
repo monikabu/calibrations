@@ -6,6 +6,7 @@
 #  user_id     :integer
 #  name        :string
 #  slack_token :string
+#  confirmed   :boolean
 #
 
 class SlackUser < ActiveRecord::Base
@@ -13,4 +14,5 @@ class SlackUser < ActiveRecord::Base
 
   validates :name, presence: true
   validates :slack_token, presence: true
+  validates :user_id, presence: true
 end

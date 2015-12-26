@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :calendars, only: :index
   end
 
-  post '/integrations' => 'users/integrations#create'
+  post '/integrate' => 'slack_users#create'
 end
